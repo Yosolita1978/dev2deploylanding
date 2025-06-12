@@ -12,8 +12,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Dev2Deploy",
-  description: "Landing page for Dev2Deploy",
+  title: 'Dev2Deploy - Next.js Development Course',
+  description: 'Join the second cohort of our FREE development course. Learn to build and deploy real-world Next.js projects.',
+  keywords: 'Next.js, React, Web Development, Course, Bootcamp',
+  openGraph: {
+    title: 'Dev2Deploy - Next.js Development Course',
+    description: 'Join the second cohort of our FREE development course.',
+    images: ['/dev2deploy.png']},
   icons: {
     icon: '/favicon.ico',
   },
