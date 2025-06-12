@@ -18,7 +18,23 @@ export const metadata = {
   openGraph: {
     title: 'Dev2Deploy - Next.js Development Course',
     description: 'Join the second cohort of our FREE development course.',
-    images: ['/dev2deploy.png']},
+    url: 'https://dev2deploylanding.vercel.app',
+    images: [
+      {
+        url: 'https://dev2deploylanding.vercel.app/dev2deploy.png',
+        width: 1200,
+        height: 630,
+        alt: 'Dev2Deploy – Build and Deploy with Next.js',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Dev2Deploy - Next.js Development Course',
+    description: 'Join the second cohort of our FREE development course.',
+    images: ['https://dev2deploylanding.vercel.app/dev2deploy.png'],
+  },
   icons: {
     icon: '/favicon.ico',
   },
