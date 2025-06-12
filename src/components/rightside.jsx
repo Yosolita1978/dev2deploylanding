@@ -3,38 +3,72 @@ import React, { useState } from 'react';
 import { Check, ArrowRight } from 'lucide-react';
 
 const RightSide = () => {
-    const [email, setEmail] = useState('');
-    const [isSubmitted, setIsSubmitted] = useState(false);
-  
-    const handleSubmit = () => {
-      if (email && email.includes('@')) {
+  const [email, setEmail] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!email || !email.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
         setIsSubmitted(true);
-        // Here you would typically send the email to your backend
-        console.log('Email submitted:', email);
+        console.log('Email saved:', data);
+      } else {
+        alert(data.message || 'Something went wrong');
       }
-    };
-  
-    return (
-        <div className="w-1/2 bg-white overflow-y-auto">
+    } catch (error) {
+      console.error('Submit error:', error);
+      alert('Failed to submit email. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="w-1/2 bg-white overflow-y-auto">
       <div className="h-full flex flex-col justify-center p-6 max-w-xl mx-auto">
         {/* Header */}
         <div className="mb-6">
           <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3 leading-tight">
             Ready to boost your portfolio and attract recruiters?
           </h2>
-          <p className="text-lg text-purple-600 font-semibold mb-4">
+          <p className="text-lg text-[#b43504] font-semibold mb-4">
             Join the second cohort!
           </p>
           <p className="text-gray-600 mb-4 text-sm">
             Sign up below and be the first to know when enrollment opens.
           </p>
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
-            <p className="text-blue-800 font-medium mb-1 text-sm">
+            <p className="text-[#b43504] font-medium mb-1 text-sm">
               🎥 Want a preview? Check out our first cohort!
             </p>
-            <p className="text-blue-700 text-xs">
+            <p className="text-blue-700 text-xs mb-2">
               Watch the complete first cohort sessions on our YouTube channel to see what you'll experience.
             </p>
+            <a 
+              href="https://youtu.be/Oj1L3BuIJuw" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm underline hover:no-underline transition-colors"
+            >
+              <span>Watch First Cohort Videos →</span>
+            </a>
           </div>
         </div>
 
@@ -56,10 +90,11 @@ const RightSide = () => {
               </div>
               <button
                 onClick={handleSubmit}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm"
+                disabled={isLoading || !email}
+                className="w-full bg-gradient-to-r from-orange-800 to-orange-600 text-white font-bold py-3 px-4 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span>TELL ME MORE!</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>{isLoading ? 'Submitting...' : 'LET\'S START!'}</span>
+                {!isLoading && <ArrowRight className="w-4 h-4" />}
               </button>
             </div>
           ) : (
@@ -73,11 +108,11 @@ const RightSide = () => {
           )}
         </div>
 
-        {/* Program Details */}
-        <div className="space-y-4">
+       {/* Program Details */}
+       <div className="space-y-4">
           <div className="text-center">
             <p className="text-base font-semibold text-gray-900 mb-3">
-              <span className="text-xl font-bold text-purple-600">Dev2Deploy</span> second cohort launches this{' '}
+              <span className="text-xl font-bold text-[#b43504]">Dev2Deploy</span> second cohort launches this{' '}
               <span className="bg-yellow-200 px-2 py-1 rounded font-bold text-gray-900">AUGUST</span> as our{' '}
               <span className="bg-yellow-200 px-2 py-1 rounded font-bold text-gray-900">FREE</span>{' '}
               program—here's how it works:
@@ -124,14 +159,14 @@ const RightSide = () => {
             <p className="text-center text-gray-700 mb-2 text-sm">
               Don't miss this chance to showcase a professional-grade project employers will notice.
             </p>
-            <p className="text-center font-bold text-base text-purple-700">
+            <p className="text-center font-bold text-base text-[#b43504]">
               Sign up today and finally bridge the gap from Dev to Deploy!
             </p>
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default RightSide;
