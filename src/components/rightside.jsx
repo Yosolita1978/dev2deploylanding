@@ -52,24 +52,9 @@ const RightSide = () => {
             Join the second cohort!
           </p>
           <p className="text-gray-600 mb-4 text-sm">
-            Sign up below and be the first to know when enrollment opens.
+            📅 Classes run every <strong>Saturday in August</strong> from <strong>10:30 a.m. to 12:00 p.m. PST</strong>, starting <strong>August 2</strong> and ending <strong>August 30</strong>.<br />
+            🧠 Sessions are recorded, and all materials will be shared via a public GitHub repo.
           </p>
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-6">
-            <p className="text-[#b43504] font-medium mb-1 text-sm">
-              🎥 Want a preview? Check out our first cohort!
-            </p>
-            <p className="text-blue-700 text-xs mb-2">
-              Watch the complete first cohort sessions on our YouTube channel to see what you'll experience.
-            </p>
-            <a 
-              href="https://youtu.be/Oj1L3BuIJuw" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm underline hover:no-underline transition-colors"
-            >
-              <span>Watch First Cohort Videos →</span>
-            </a>
-          </div>
         </div>
 
         {/* Email Form */}
@@ -103,20 +88,20 @@ const RightSide = () => {
                 <Check className="w-5 h-5 text-green-600" />
               </div>
               <h3 className="text-base font-semibold text-green-800 mb-1">You're on the list!</h3>
-              <p className="text-green-700 text-sm">We'll notify you when enrollment opens.</p>
+              <p className="text-green-700 text-sm">
+                You’re on the list! We’ll send you the Zoom link, GitHub repo, and recordings before the first class.
+              </p>
             </div>
           )}
         </div>
 
-       {/* Program Details */}
-       <div className="space-y-4">
+        {/* Program Details */}
+        <div className="space-y-4">
           <div className="text-center">
-            <p className="text-base font-semibold text-gray-900 mb-3">
-              <span className="text-xl font-bold text-[#b43504]">Dev2Deploy</span> second cohort launches this{' '}
-              <span className="bg-yellow-200 px-2 py-1 rounded font-bold text-gray-900">AUGUST</span> as our{' '}
-              <span className="bg-yellow-200 px-2 py-1 rounded font-bold text-gray-900">FREE</span>{' '}
-              program—here's how it works:
-            </p>
+            
+
+              <p className="text-base font-semibold text-gray-900 mb-3">Leave your email to receive the calendar invite for the first live session — and get ready to build!</p>
+              
           </div>
 
           <div className="space-y-3">
@@ -151,17 +136,22 @@ const RightSide = () => {
             </div>
           </div>
 
-          {/* CTA Footer */}
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg border border-purple-100 mt-4">
-            <p className="text-center text-gray-800 font-medium mb-1 text-sm">
-              Spaces are limited and enrollment closes soon.
+          {/* Video Preview at Bottom */}
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mt-6">
+            <p className="text-[#b43504] font-medium mb-1 text-sm">
+              🎥 Want a preview? Check out our first cohort!
             </p>
-            <p className="text-center text-gray-700 mb-2 text-sm">
-              Don't miss this chance to showcase a professional-grade project employers will notice.
+            <p className="text-blue-700 text-xs mb-2">
+              Watch the complete first cohort sessions on our YouTube channel to see what you'll experience.
             </p>
-            <p className="text-center font-bold text-base text-[#b43504]">
-              Sign up today and finally bridge the gap from Dev to Deploy!
-            </p>
+            <a
+              href="https://youtu.be/Oj1L3BuIJuw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm underline hover:no-underline transition-colors"
+            >
+              <span>Watch First Cohort Videos →</span>
+            </a>
           </div>
         </div>
       </div>
